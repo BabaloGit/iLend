@@ -1,0 +1,32 @@
+﻿@model IEnumerable<iLend.Models.Recipient>
+
+@{
+    ViewBag.Title = "Recipients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recipients</h2>
+
+@if (!Model.Any())
+{
+    <p>We don't have any recipients yet.</p>
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Recipient</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var recipient in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(recipient.Name, "Details", "Recipients", new { id = recipient.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<iLend.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+@if (!Model.Any())
+{
+    <p>We don't have any products yet.</p>
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Product</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
