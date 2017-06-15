@@ -1,8 +1,25 @@
-﻿@model iLend.Models.Product
+﻿@model iLend.ViewModels.RandomProductViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+@{
+    var className = Model.Recipients.Count > 5 ? "Popular" : null;
+}
 
+<h2 class="@className">@Model.Product.Name</h2>
+ 
+@if (Model.Recipients.Count == 0)
+{
+    <text>No One has borrowed this item before.</text>
+}
+else
+{
+    <ul>        
+        @foreach (var recipient in Model.Recipients)
+        {
+            <li>@recipient.Name</li>
+        }
+    </ul>
+}
