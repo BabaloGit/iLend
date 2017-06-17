@@ -1,5 +1,6 @@
 ﻿using iLend.Models;
 using iLend.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -26,6 +27,39 @@ namespace iLend.Controllers
             var products = _context.Products.Include(p => p.Category).ToList();
 
             return View(products);
+        }
+
+        public ViewResult New()
+        {
+            var categories = _context.Categories.ToList();
+
+            var viewModel = new ProductFormViewModel()
+            {
+                Categories = categories
+            };
+
+            return View("ProductForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Product product)
+        {
+            if (product.Id == 0)
+            {
+                product.DateAdded = DateTime.Now;
+                _context.Products.Add(product);
+            }
+            else
+            {
+                var productInDb = _context.Products.Single(p => p.Id == product.Id);
+                productInDb.Name = product.Name;
+                productInDb.CategoryId = product.CategoryId;
+                productInDb.NumberInStock = product.NumberInStock;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Products");
         }
 
         public ActionResult Details(int id)
@@ -55,6 +89,22 @@ namespace iLend.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+                return HttpNotFound();
+
+            var viewModel = new ProductFormViewModel()
+            {
+                Product = product,
+                Categories = _context.Categories.ToList()
+            };
+
+            return View("ProductForm", viewModel);
         }
     }
 }

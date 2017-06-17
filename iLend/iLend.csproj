@@ -254,6 +254,7 @@
     <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProductFormViewModel.cs" />
     <Compile Include="ViewModels\RecipientFormViewModel.cs" />
     <Compile Include="ViewModels\RandomProductViewModel.cs" />
   </ItemGroup>
@@ -322,6 +323,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Recipients\RecipientForm.cshtml" />
+    <Content Include="Views\Products\ProductForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

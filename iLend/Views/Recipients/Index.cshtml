@@ -6,6 +6,9 @@
 }
 
 <h2>Recipients</h2>
+<p>
+    @Html.ActionLink("New Recipient", "New", "Recipients", null, new { @class = "btn btn-primary" })
+</p>
 
 @if (!Model.Any())
 {

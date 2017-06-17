@@ -6,6 +6,9 @@
 }
 
 <h2>Products</h2>
+<p>
+    @Html.ActionLink("New Product", "New", "Products", null, new { @class = "btn btn-primary" })
+</p>
 
 @if (!Model.Any())
 {
@@ -25,7 +28,7 @@ else
         @foreach (var product in Model)
         {
             <tr>
-                <td>@Html.ActionLink(product.Name, "Details", "Products", new { id = product.Id }, null)</td>
+                <td>@Html.ActionLink(product.Name, "Edit", "Products", new {id = product.Id}, null)</td>
                 <td>@product.Category.Name</td>
             </tr>
         }

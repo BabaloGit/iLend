@@ -7,5 +7,15 @@ namespace iLend.ViewModels
     {
         public IEnumerable<UserGroup> UserGroups { get; set; }
         public Recipient Recipient { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (Recipient != null && Recipient.Id != 0)
+                    return "Edit Recipient";
+
+                return "New Recipient";
+            }
+        }
     }
 }
