@@ -28,7 +28,7 @@ namespace iLend.Controllers
 
         public ActionResult Details(int id)
         {
-            var recipient = _context.Recipients.SingleOrDefault(r => r.Id == id);
+            var recipient = _context.Recipients.Include(c => c.UserGroup).SingleOrDefault(r => r.Id == id);
 
             if (recipient == null)
                 return HttpNotFound();

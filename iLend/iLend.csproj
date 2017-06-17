@@ -224,6 +224,18 @@
     <Compile Include="Migrations\201706170946410_SetNameOfUserGroups.Designer.cs">
       <DependentUpon>201706170946410_SetNameOfUserGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706171004257_AddBirthDateToRecipient.cs" />
+    <Compile Include="Migrations\201706171004257_AddBirthDateToRecipient.Designer.cs">
+      <DependentUpon>201706171004257_AddBirthDateToRecipient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171007144_AddBirthDateToRecipient1.cs" />
+    <Compile Include="Migrations\201706171007144_AddBirthDateToRecipient1.Designer.cs">
+      <DependentUpon>201706171007144_AddBirthDateToRecipient1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171056561_ApplyAnnotationsToUserGroupName.cs" />
+    <Compile Include="Migrations\201706171056561_ApplyAnnotationsToUserGroupName.Designer.cs">
+      <DependentUpon>201706171056561_ApplyAnnotationsToUserGroupName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -338,6 +350,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706170946410_SetNameOfUserGroups.resx">
       <DependentUpon>201706170946410_SetNameOfUserGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171004257_AddBirthDateToRecipient.resx">
+      <DependentUpon>201706171004257_AddBirthDateToRecipient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171007144_AddBirthDateToRecipient1.resx">
+      <DependentUpon>201706171007144_AddBirthDateToRecipient1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171056561_ApplyAnnotationsToUserGroupName.resx">
+      <DependentUpon>201706171056561_ApplyAnnotationsToUserGroupName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

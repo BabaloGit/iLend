@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace iLend.Models
 {
@@ -8,6 +9,7 @@ namespace iLend.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+        public DateTime? BirthDate { get; set; }
         public bool IsSubscibedToNewsletter { get; set; }
         public UserGroup UserGroup { get; set; }
         public byte UserGroupId { get; set; }
