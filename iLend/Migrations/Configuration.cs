@@ -10,7 +10,6 @@ namespace iLend.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "iLend.Models.ApplicationDbContext";
         }
 
         protected override void Seed(iLend.Models.ApplicationDbContext context)
