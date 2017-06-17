@@ -200,12 +200,21 @@
     <Compile Include="Migrations\201706170745069_InitialModel.Designer.cs">
       <DependentUpon>201706170745069_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706170813201_AddIsSubscibedToRecipient.cs" />
+    <Compile Include="Migrations\201706170813201_AddIsSubscibedToRecipient.Designer.cs">
+      <DependentUpon>201706170813201_AddIsSubscibedToRecipient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706170826304_AddMembershipType.cs" />
+    <Compile Include="Migrations\201706170826304_AddMembershipType.Designer.cs">
+      <DependentUpon>201706170826304_AddMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipient.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RandomProductViewModel.cs" />
@@ -295,6 +304,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706170745069_InitialModel.resx">
       <DependentUpon>201706170745069_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706170813201_AddIsSubscibedToRecipient.resx">
+      <DependentUpon>201706170813201_AddIsSubscibedToRecipient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706170826304_AddMembershipType.resx">
+      <DependentUpon>201706170826304_AddMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
