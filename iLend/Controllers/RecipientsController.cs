@@ -23,17 +23,28 @@ namespace iLend.Controllers
         public ActionResult New()
         {
             var userGroups = _context.UserGroups.ToList();
-            var viewModel = new NewRecipientViewModel()
+            var viewModel = new RecipientFormViewModel()
             {
                 UserGroups = userGroups
             };
 
-            return View(viewModel);
+            return View("RecipientForm", viewModel);
         }
 
-        public ActionResult Create(Recipient recipient)
+        public ActionResult Save(Recipient recipient)
         {
-            _context.Recipients.Add(recipient);
+            if (recipient.Id == 0)
+                _context.Recipients.Add(recipient);
+
+            else
+            {
+                var recipientInDb = _context.Recipients.Single(r => r.Id == recipient.Id);
+                recipientInDb.Name = recipient.Name;
+                recipientInDb.BirthDate = recipient.BirthDate;
+                recipientInDb.UserGroupId = recipient.UserGroupId;
+                recipientInDb.IsSubscibedToNewsletter = recipient.IsSubscibedToNewsletter;
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Recipients");
@@ -54,6 +65,22 @@ namespace iLend.Controllers
                 return HttpNotFound();
 
             return View(recipient);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var recipient = _context.Recipients.SingleOrDefault(r => r.Id == id);
+
+            if (recipient == null)
+                return HttpNotFound();
+
+            var viewModel = new RecipientFormViewModel()
+            {
+                Recipient = recipient,
+                UserGroups = _context.UserGroups.ToList()
+            };
+
+            return View("RecipientForm", viewModel);
         }
     }
 }

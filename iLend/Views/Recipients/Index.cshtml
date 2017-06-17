@@ -25,7 +25,7 @@ else
             @foreach (var recipient in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(recipient.Name, "Details", "Recipients", new { id = recipient.Id }, null)</td>
+                    <td>@Html.ActionLink(recipient.Name, "Edit", "Recipients", new { id = recipient.Id }, null)</td>
                     <td>@recipient.UserGroup.Name</td>
                 </tr>
             }
