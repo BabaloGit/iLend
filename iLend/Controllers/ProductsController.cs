@@ -1,26 +1,41 @@
 ﻿using iLend.Models;
 using iLend.ViewModels;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace iLend.Controllers
 {
     public class ProductsController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public ProductsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ViewResult Index()
         {
-            var products = GetProducts();
+            var products = _context.Products.Include(p => p.Category).ToList();
 
             return View(products);
         }
 
-        public IEnumerable<Product> GetProducts()
+        public ActionResult Details(int id)
         {
-            return  new List<Product>()
-            {
-                new Product() { Id = 1, Name = "Network Cable" },
-                new Product() { Id = 2, Name = "Lenovo Notebook PC" }
-            };
+            var product = _context.Products.Include(p => p.Category).SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+                return HttpNotFound();
+
+            return View(product);
         }
         
         // GET: Products/Random

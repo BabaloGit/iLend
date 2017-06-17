@@ -1,4 +1,5 @@
 ﻿using iLend.Models;
+using iLend.ViewModels;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -17,6 +18,25 @@ namespace iLend.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public ActionResult New()
+        {
+            var userGroups = _context.UserGroups.ToList();
+            var viewModel = new NewRecipientViewModel()
+            {
+                UserGroups = userGroups
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult Create(Recipient recipient)
+        {
+            _context.Recipients.Add(recipient);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Recipients");
         }
 
         public ViewResult Index()

@@ -1,0 +1,31 @@
+﻿@model iLend.ViewModels.NewRecipientViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Recipient</h2>
+
+@using (Html.BeginForm("Create", "Recipients"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Recipient.Name)
+        @Html.TextBoxFor(m => m.Recipient.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Recipient.BirthDate)
+        @Html.TextBoxFor(m => m.Recipient.Name, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Recipient.IsSubscibedToNewsletter) Subscribe to Newsletter?
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Recipient.UserGroupId)
+        @Html.DropDownListFor(m => m.Recipient.UserGroupId, new SelectList(Model.UserGroups, "Id", "Name"), "Select User Group", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

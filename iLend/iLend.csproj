@@ -236,8 +236,17 @@
     <Compile Include="Migrations\201706171056561_ApplyAnnotationsToUserGroupName.Designer.cs">
       <DependentUpon>201706171056561_ApplyAnnotationsToUserGroupName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706171137306_UpdateDomainModelWithCategories.cs" />
+    <Compile Include="Migrations\201706171137306_UpdateDomainModelWithCategories.Designer.cs">
+      <DependentUpon>201706171137306_UpdateDomainModelWithCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171148287_PopulateCategoriesTable.cs" />
+    <Compile Include="Migrations\201706171148287_PopulateCategoriesTable.Designer.cs">
+      <DependentUpon>201706171148287_PopulateCategoriesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipient.cs" />
@@ -245,6 +254,7 @@
     <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NewRecipientViewModel.cs" />
     <Compile Include="ViewModels\RandomProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +320,8 @@
     <Content Include="Views\Recipients\Details.cshtml" />
     <Content Include="Views\Recipients\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Recipients\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -359,6 +371,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706171056561_ApplyAnnotationsToUserGroupName.resx">
       <DependentUpon>201706171056561_ApplyAnnotationsToUserGroupName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171137306_UpdateDomainModelWithCategories.resx">
+      <DependentUpon>201706171137306_UpdateDomainModelWithCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171148287_PopulateCategoriesTable.resx">
+      <DependentUpon>201706171148287_PopulateCategoriesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
