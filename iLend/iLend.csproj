@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201706170846090_PopulateUserGroups.Designer.cs">
       <DependentUpon>201706170846090_PopulateUserGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706170903413_ApplyAnnotationsToRecipientName.cs" />
+    <Compile Include="Migrations\201706170903413_ApplyAnnotationsToRecipientName.Designer.cs">
+      <DependentUpon>201706170903413_ApplyAnnotationsToRecipientName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706170846090_PopulateUserGroups.resx">
       <DependentUpon>201706170846090_PopulateUserGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706170903413_ApplyAnnotationsToRecipientName.resx">
+      <DependentUpon>201706170903413_ApplyAnnotationsToRecipientName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
