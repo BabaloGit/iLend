@@ -18,6 +18,7 @@ else
         <thead>
         <tr>
             <th>Recipient</th>
+            <th>Discount Rate</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@ else
             {
                 <tr>
                     <td>@Html.ActionLink(recipient.Name, "Details", "Recipients", new { id = recipient.Id }, null)</td>
+                    <td>@recipient.UserGroup.DiscountRate %</td>
                 </tr>
             }
         </tbody>
