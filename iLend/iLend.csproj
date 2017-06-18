@@ -244,11 +244,16 @@
     <Compile Include="Migrations\201706171148287_PopulateCategoriesTable.Designer.cs">
       <DependentUpon>201706171148287_PopulateCategoriesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706181918190_AddAnnotationsToBirthdate.cs" />
+    <Compile Include="Migrations\201706181918190_AddAnnotationsToBirthdate.Designer.cs">
+      <DependentUpon>201706181918190_AddAnnotationsToBirthdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Min18YearsToRegister.cs" />
     <Compile Include="Models\Recipient.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\UserGroup.cs" />
@@ -379,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706171148287_PopulateCategoriesTable.resx">
       <DependentUpon>201706171148287_PopulateCategoriesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181918190_AddAnnotationsToBirthdate.resx">
+      <DependentUpon>201706181918190_AddAnnotationsToBirthdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

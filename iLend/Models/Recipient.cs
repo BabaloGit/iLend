@@ -11,9 +11,11 @@ namespace iLend.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Required]
         [Display(Name = "Date of Birth")]
-
-        public DateTime? BirthDate { get; set; }
+        [DataType(DataType.Date)]
+        [Min18YearsToRegister]
+        public DateTime BirthDate { get; set; }
 
         public bool IsSubscibedToNewsletter { get; set; }
 

@@ -8,8 +8,5 @@
 <h2>@Model.Name</h2>
 <ul>
     <li>User Group: @Model.UserGroup.Name</li>
-    @if (Model.BirthDate.HasValue)
-    {
-        <li>BirthDate: @Model.BirthDate.Value</li>
-    }
+    <li>BirthDate: @Model.BirthDate</li>
 </ul>

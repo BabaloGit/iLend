@@ -25,14 +25,28 @@ namespace iLend.Controllers
             var userGroups = _context.UserGroups.ToList();
             var viewModel = new RecipientFormViewModel()
             {
+                Recipient = new Recipient(),
                 UserGroups = userGroups
             };
 
             return View("RecipientForm", viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Recipient recipient)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new RecipientFormViewModel()
+                {
+                    Recipient = recipient,
+                    UserGroups = _context.UserGroups.ToList()
+                };
+
+                return View("RecipientForm", viewModel);
+            }
+
             if (recipient.Id == 0)
                 _context.Recipients.Add(recipient);
 
