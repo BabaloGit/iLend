@@ -42,8 +42,19 @@ namespace iLend.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Product product)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ProductFormViewModel(product)
+                {
+                    Categories = _context.Categories.ToList()
+                };
+
+                return View("ProductForm", viewModel);
+            }
+
             if (product.Id == 0)
             {
                 product.DateAdded = DateTime.Now;
@@ -98,9 +109,8 @@ namespace iLend.Controllers
             if (product == null)
                 return HttpNotFound();
 
-            var viewModel = new ProductFormViewModel()
+            var viewModel = new ProductFormViewModel(product)
             {
-                Product = product,
                 Categories = _context.Categories.ToList()
             };
 

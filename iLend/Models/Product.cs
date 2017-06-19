@@ -21,6 +21,7 @@ namespace iLend.Models
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Number in Stock")]
+        [Range(1, Int32.MaxValue, ErrorMessage = "There should be at least 1 item in stock.")]
         public byte NumberInStock { get; set; }
     }
 }
