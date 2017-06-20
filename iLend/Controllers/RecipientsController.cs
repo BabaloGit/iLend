@@ -66,9 +66,7 @@ namespace iLend.Controllers
 
         public ViewResult Index()
         {
-            var recipients = _context.Recipients.Include(c => c.UserGroup).ToList();
-
-            return View(recipients);
+            return View();
         }
 
         public ActionResult Details(int id)

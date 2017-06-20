@@ -11,6 +11,7 @@ namespace iLend.App_Start
             // Domain to Dto
             CreateMap<Recipient, RecipientDto>();
             CreateMap<Product, ProductDto>();
+            CreateMap<UserGroup, UserGroupDto>();
 
             // Dto to Domain
             CreateMap<RecipientDto, Recipient>()

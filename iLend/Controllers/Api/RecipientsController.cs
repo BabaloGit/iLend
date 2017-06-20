@@ -3,6 +3,7 @@ using iLend.Models;
 using iLend.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -21,7 +22,10 @@ namespace iLend.Controllers.Api
         // GET /api/recipients
         public IHttpActionResult GetRecipients()
         {
-            return Ok(Mapper.Map<IEnumerable<RecipientDto>>(_context.Recipients.ToList()));
+            return Ok(Mapper.Map<IEnumerable<RecipientDto>>(_context
+                .Recipients
+                .Include(r => r.UserGroup)
+                .ToList()));
         }
 
         // GET /api/recipients/1

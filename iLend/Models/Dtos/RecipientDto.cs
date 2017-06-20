@@ -20,5 +20,7 @@ namespace iLend.Models.Dtos
         public bool IsSubscibedToNewsletter { get; set; }
         
         public byte UserGroupId { get; set; }
+
+        public UserGroupDto UserGroup { get; set; }
     }
 }

@@ -10,41 +10,45 @@
     @Html.ActionLink("New Recipient", "New", "Recipients", null, new { @class = "btn btn-primary" })
 </p>
 
-@if (!Model.Any())
-{
-    <p>We don't have any recipients yet.</p>
-}
-
-else
-{
-    <table id="products" class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>Recipient</th>
-            <th>User Group</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach (var recipient in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(recipient.Name, "Edit", "Recipients", new { id = recipient.Id }, null)</td>
-                    <td>@recipient.UserGroup.Name</td>
-                    <td>
-                        <button data-recipient-id="@recipient.Id" class="btn-link js-delete">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<table id="products" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Recipient</th>
+        <th>User Group</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
 @section scripts
 {
     <script>
         $(document).ready(function() {
-            $("#products").DataTable();
+            $("#products").DataTable({
+                ajax: {
+                    url: "/api/recipients",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function(data, type, recipient) {
+                            return "<a href='/recipients/edit/'" + recipient.id + "'>" + recipient.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "userGroup.name"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-recipient-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
 
             $("#products").on("click", ".js-delete",
                 function() {
