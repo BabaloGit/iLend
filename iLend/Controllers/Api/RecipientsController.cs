@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using iLend.Models;
 using iLend.Models.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -18,28 +19,28 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/recipients
-        public IEnumerable<RecipientDto> GetRecipients()
+        public IHttpActionResult GetRecipients()
         {
-            return Mapper.Map<IEnumerable<RecipientDto>>(_context.Recipients.ToList());
+            return Ok(Mapper.Map<IEnumerable<RecipientDto>>(_context.Recipients.ToList()));
         }
 
         // GET /api/recipients/1
-        public RecipientDto GetRecipient(int id)
+        public IHttpActionResult GetRecipient(int id)
         {
             var recipient = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
             if (recipient == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<RecipientDto>(recipient);
+            return Ok(Mapper.Map<RecipientDto>(recipient));
         }
 
         // POST /api/recipients
         [HttpPost]
-        public RecipientDto CreateRecipient(RecipientDto recipientDto)
+        public IHttpActionResult CreateRecipient(RecipientDto recipientDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var recipient = Mapper.Map<Recipient>(recipientDto);
 
@@ -48,15 +49,15 @@ namespace iLend.Controllers.Api
 
             recipientDto.Id = recipient.Id;
 
-            return recipientDto;
+            return Created(new Uri(Request.RequestUri + "/" + recipient.Id), recipientDto);
         }
 
         // PUT /api/recipients/1
         [HttpPut]
-        public void UpdateRecipient(int id, RecipientDto recipientDto)
+        public IHttpActionResult UpdateRecipient(int id, RecipientDto recipientDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var recipientInDb = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
@@ -66,15 +67,17 @@ namespace iLend.Controllers.Api
             Mapper.Map(recipientDto, recipientInDb);
 
             _context.SaveChanges();
+
+            return Ok();
         }
 
 
         // DELETE /api/recipients/1
         [HttpDelete]
-        public void DeleteRecipient(int id)
+        public IHttpActionResult DeleteRecipient(int id)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var recipientInDb = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
@@ -83,6 +86,8 @@ namespace iLend.Controllers.Api
 
             _context.Recipients.Remove(recipientInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
