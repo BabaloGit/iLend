@@ -1,4 +1,6 @@
-﻿using iLend.Models;
+﻿using AutoMapper;
+using iLend.Models;
+using iLend.Models.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,38 +18,42 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/recipients
-        public IEnumerable<Recipient> GetRecipients()
+        public IEnumerable<RecipientDto> GetRecipients()
         {
-            return _context.Recipients.ToList();
+            return Mapper.Map<IEnumerable<RecipientDto>>(_context.Recipients.ToList());
         }
 
         // GET /api/recipients/1
-        public Recipient GetRecipient(int id)
+        public RecipientDto GetRecipient(int id)
         {
             var recipient = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
             if (recipient == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return recipient;
+            return Mapper.Map<RecipientDto>(recipient);
         }
 
         // POST /api/recipients
         [HttpPost]
-        public Recipient CreateRecipient(Recipient recipient)
+        public RecipientDto CreateRecipient(RecipientDto recipientDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var recipient = Mapper.Map<Recipient>(recipientDto);
+
             _context.Recipients.Add(recipient);
             _context.SaveChanges();
 
-            return recipient;
+            recipientDto.Id = recipient.Id;
+
+            return recipientDto;
         }
 
         // PUT /api/recipients/1
         [HttpPut]
-        public void UpdateRecipient(int id, Recipient recipient)
+        public void UpdateRecipient(int id, RecipientDto recipientDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -57,10 +63,7 @@ namespace iLend.Controllers.Api
             if (recipientInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            recipientInDb.Name = recipient.Name;
-            recipientInDb.BirthDate = recipient.BirthDate;
-            recipientInDb.IsSubscibedToNewsletter = recipient.IsSubscibedToNewsletter;
-            recipientInDb.UserGroupId = recipient.UserGroupId;
+            Mapper.Map(recipientDto, recipientInDb);
 
             _context.SaveChanges();
         }
