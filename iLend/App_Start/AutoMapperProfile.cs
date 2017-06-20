@@ -8,8 +8,16 @@ namespace iLend.App_Start
     {
         public AutoMapperProfile()
         {
+            // Domain to Dto
             CreateMap<Recipient, RecipientDto>();
-            CreateMap<RecipientDto, Recipient>();
+            CreateMap<Product, ProductDto>();
+
+            // Dto to Domain
+            CreateMap<RecipientDto, Recipient>()
+                .ForMember(r => r.Id, opt => opt.Ignore());
+
+            CreateMap<ProductDto, Product>()
+                .ForMember(p => p.Id, opt => opt.Ignore());
         }
     }
 }

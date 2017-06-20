@@ -12,7 +12,7 @@ namespace iLend.Models.Dtos
         public string Name { get; set; }
 
         [Required]
-        [Min18YearsToRegister]
+        //[Min18YearsToRegister]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime BirthDate { get; set; }

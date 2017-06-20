@@ -11,7 +11,7 @@ namespace iLend.Controllers.Api
 {
     public class RecipientsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public RecipientsController()
         {
@@ -62,7 +62,7 @@ namespace iLend.Controllers.Api
             var recipientInDb = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
             if (recipientInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             Mapper.Map(recipientDto, recipientInDb);
 
