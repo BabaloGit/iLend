@@ -44,6 +44,8 @@ else
 {
     <script>
         $(document).ready(function() {
+            $("#products").DataTable();
+
             $("#products").on("click", ".js-delete",
                 function() {
                     var button = $(this);
