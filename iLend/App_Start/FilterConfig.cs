@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace iLend
 {
@@ -9,6 +8,7 @@ namespace iLend
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
