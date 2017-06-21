@@ -1,11 +1,10 @@
-﻿using System;
+﻿using iLend.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using iLend.Models;
+using System;
 
 namespace iLend
 {
@@ -54,9 +53,9 @@ namespace iLend
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "259880831156362",
+               appSecret: "a425451adbbf5c10d063c7ca1c2a89bf");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

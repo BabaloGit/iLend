@@ -8,6 +8,10 @@ namespace iLend.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "ID/Passport Number")]
+        public string IdNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel
