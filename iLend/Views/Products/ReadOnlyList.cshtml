@@ -1,0 +1,41 @@
+﻿@model IEnumerable<iLend.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+<table id="products" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#products").DataTable({
+                ajax: {
+                    url: "/api/products",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "category.name"
+                    }
+                ]
+            });
+        });
+    </script>
+}

@@ -24,9 +24,13 @@ namespace iLend.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageProducts))
+                return View("List");
+
+            return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public ViewResult New()
         {
             var categories = _context.Categories.ToList();
