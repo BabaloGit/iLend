@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201706181918190_AddAnnotationsToBirthdate.Designer.cs">
       <DependentUpon>201706181918190_AddAnnotationsToBirthdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706211615217_SeedUsers.cs" />
+    <Compile Include="Migrations\201706211615217_SeedUsers.Designer.cs">
+      <DependentUpon>201706211615217_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -645,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706181918190_AddAnnotationsToBirthdate.resx">
       <DependentUpon>201706181918190_AddAnnotationsToBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706211615217_SeedUsers.resx">
+      <DependentUpon>201706211615217_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
