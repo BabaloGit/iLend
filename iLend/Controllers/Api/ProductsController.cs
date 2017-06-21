@@ -3,6 +3,7 @@ using iLend.Models;
 using iLend.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 
@@ -20,13 +21,18 @@ namespace iLend.Controllers.Api
         // GET /api/products
         public IHttpActionResult GetProducts()
         {
-            return Ok(Mapper.Map<IEnumerable<ProductDto>>(_context.Products.ToList()));
+            return Ok(Mapper.Map<IEnumerable<ProductDto>>(_context
+                .Products
+                .Include(p => p.Category)
+                .ToList()));
         }
 
         // GET /api/products/1
         public IHttpActionResult GetProduct(int id)
         {
-            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+            var product = _context.Products
+                .Include(p => p.Category)
+                .SingleOrDefault(p => p.Id == id);
 
             if (product == null)
                 return NotFound();
@@ -41,9 +47,9 @@ namespace iLend.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var product = Mapper.Map<Recipient>(productDto);
+            var product = Mapper.Map<Product>(productDto);
 
-            _context.Recipients.Add(product);
+            _context.Products.Add(product);
             _context.SaveChanges();
 
             productDto.Id = product.Id;
@@ -58,7 +64,7 @@ namespace iLend.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var productInDb = _context.Recipients.SingleOrDefault(p => p.Id == id);
+            var productInDb = _context.Products.SingleOrDefault(p => p.Id == id);
 
             if (productInDb == null)
                 return NotFound();
@@ -75,15 +81,12 @@ namespace iLend.Controllers.Api
         [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var productInDb = _context.Recipients.SingleOrDefault(p => p.Id == id);
+            var productInDb = _context.Products.SingleOrDefault(p => p.Id == id);
 
             if (productInDb == null)
                 return NotFound();
 
-            _context.Recipients.Remove(productInDb);
+            _context.Products.Remove(productInDb);
             _context.SaveChanges();
 
             return Ok();

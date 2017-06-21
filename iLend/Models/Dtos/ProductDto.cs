@@ -14,6 +14,8 @@ namespace iLend.Models.Dtos
         [Required]
         public byte CategoryId { get; set; }
 
+        public CategoryDto Category { get; set; }
+
         public DateTime DateAdded { get; set; }
         
         [Range(1, Int32.MaxValue, ErrorMessage = "There should be at least 1 item in stock.")]

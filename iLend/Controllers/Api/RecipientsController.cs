@@ -31,7 +31,9 @@ namespace iLend.Controllers.Api
         // GET /api/recipients/1
         public IHttpActionResult GetRecipient(int id)
         {
-            var recipient = _context.Recipients.SingleOrDefault(r => r.Id == id);
+            var recipient = _context.Recipients
+                .Include(r => r.UserGroup)
+                .SingleOrDefault(r => r.Id == id);
 
             if (recipient == null)
                 return NotFound();
@@ -80,9 +82,6 @@ namespace iLend.Controllers.Api
         [HttpDelete]
         public IHttpActionResult DeleteRecipient(int id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
             var recipientInDb = _context.Recipients.SingleOrDefault(r => r.Id == id);
 
             if (recipientInDb == null)

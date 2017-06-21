@@ -1,4 +1,5 @@
-﻿using iLend.Models;
+﻿using System;
+using iLend.Models;
 using iLend.ViewModels;
 using System.Data.Entity;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace iLend.Controllers
             var userGroups = _context.UserGroups.ToList();
             var viewModel = new RecipientFormViewModel()
             {
-                Recipient = new Recipient(),
+                Recipient = new Recipient()
+                {
+                    BirthDate = DateTime.Now
+                },
                 UserGroups = userGroups
             };
 

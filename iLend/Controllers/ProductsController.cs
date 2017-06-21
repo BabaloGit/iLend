@@ -24,9 +24,7 @@ namespace iLend.Controllers
 
         public ViewResult Index()
         {
-            var products = _context.Products.Include(p => p.Category).ToList();
-
-            return View(products);
+            return View();
         }
 
         public ViewResult New()

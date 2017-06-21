@@ -10,7 +10,7 @@
     @Html.ActionLink("New Recipient", "New", "Recipients", null, new { @class = "btn btn-primary" })
 </p>
 
-<table id="products" class="table table-bordered table-hover">
+<table id="recipients" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>Recipient</th>
@@ -26,7 +26,7 @@
 {
     <script>
         $(document).ready(function() {
-            var table = $("#products").DataTable({
+            var table = $("#recipients").DataTable({
                 ajax: {
                     url: "/api/recipients",
                     dataSrc: ""
@@ -35,7 +35,7 @@
                     {
                         data: "name",
                         render: function(data, type, recipient) {
-                            return "<a href='/recipients/edit/'" + recipient.id + "'>" + recipient.name + "</a>";
+                            return "<a href='/recipients/edit/" + recipient.id + "'>" + recipient.name + "</a>";
                         }
                     },
                     {
@@ -50,7 +50,7 @@
                 ]
             });
 
-            $("#products").on("click", ".js-delete",
+            $("#recipients").on("click", ".js-delete",
                 function() {
                     var button = $(this);
 
@@ -70,7 +70,7 @@
                                 className: "btn-danger",
                                 callback: function () {
                                     $.ajax({
-                                        url: "/api/products/" + button.attr("data-recipient-id"),
+                                        url: "/api/recipients/" + button.attr("data-recipient-id"),
                                         method: "DELETE",
                                         success: function() {
                                             table.row(button.parents("tr")).remove().draw();
