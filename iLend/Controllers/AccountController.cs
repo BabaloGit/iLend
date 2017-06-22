@@ -1,4 +1,5 @@
 ﻿using iLend.Models;
+using iLend.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using iLend.ViewModels;
 
 namespace iLend.Controllers
 {
@@ -153,7 +153,8 @@ namespace iLend.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    IdNumber = model.IdNumber
+                    IdNumber = model.IdNumber,
+                    Phone = model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

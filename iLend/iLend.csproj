@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201706211757504_AddIdNumberToApplicationUser.Designer.cs">
       <DependentUpon>201706211757504_AddIdNumberToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706221141376_AddPhoneToApplicationUser.cs" />
+    <Compile Include="Migrations\201706221141376_AddPhoneToApplicationUser.Designer.cs">
+      <DependentUpon>201706221141376_AddPhoneToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -664,6 +668,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706211757504_AddIdNumberToApplicationUser.resx">
       <DependentUpon>201706211757504_AddIdNumberToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706221141376_AddPhoneToApplicationUser.resx">
+      <DependentUpon>201706221141376_AddPhoneToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

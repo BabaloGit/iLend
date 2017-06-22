@@ -1,8 +1,8 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace iLend.Models
 {
@@ -11,6 +11,12 @@ namespace iLend.Models
         [Required]
         [StringLength(255)]
         public string IdNumber { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "The Phone field is not a valid phone number.")]
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
