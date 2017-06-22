@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iLend.Models;
+using iLend.ViewModels;
 
 namespace iLend.Controllers
 {
