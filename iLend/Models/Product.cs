@@ -23,5 +23,7 @@ namespace iLend.Models
         [Display(Name = "Number in Stock")]
         [Range(1, Int32.MaxValue, ErrorMessage = "There should be at least 1 item in stock.")]
         public byte NumberInStock { get; set; }
+
+        public byte NumberAvailable { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace iLend.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<HandOver> HandOvers { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

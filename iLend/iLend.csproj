@@ -218,6 +218,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\NewHandoversController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\RecipientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -292,7 +293,17 @@
     <Compile Include="Migrations\201706221141376_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201706221141376_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706231317256_AddHandOver.cs" />
+    <Compile Include="Migrations\201706231317256_AddHandOver.Designer.cs">
+      <DependentUpon>201706231317256_AddHandOver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706231325107_AddNumberAvailableToProduct.cs" />
+    <Compile Include="Migrations\201706231325107_AddNumberAvailableToProduct.Designer.cs">
+      <DependentUpon>201706231325107_AddNumberAvailableToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Dtos\NewHandOverDto.cs" />
+    <Compile Include="Models\HandOver.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
@@ -687,6 +698,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706221141376_AddPhoneToApplicationUser.resx">
       <DependentUpon>201706221141376_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231317256_AddHandOver.resx">
+      <DependentUpon>201706231317256_AddHandOver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231325107_AddNumberAvailableToProduct.resx">
+      <DependentUpon>201706231325107_AddNumberAvailableToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
