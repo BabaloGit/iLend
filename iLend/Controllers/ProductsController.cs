@@ -45,6 +45,7 @@ namespace iLend.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public ActionResult Save(Product product)
         {
             if (!ModelState.IsValid)
@@ -104,6 +105,7 @@ namespace iLend.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public ActionResult Edit(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.Id == id);
