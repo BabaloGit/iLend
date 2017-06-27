@@ -9,7 +9,7 @@
 <form>
     <div class="form-group">
         <label>Recipient</label>
-        <input type="text" value="" class="form-control" />
+        <input id="recipient" type="text" value="" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -19,3 +19,35 @@
     
     <button class="btn btn-primary">Submit</button>
 </form>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var vm = {};
+
+            var recipients = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/recipients?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#recipient').typeahead({
+                    minLength: 3,
+                    highlight: true
+            },
+            {
+                name: 'recipients',
+                display: 'name',
+                source: recipients
+            }).on("typeahead:select",
+            function(e, recipient) {
+                vm.recipientId = recipient.Id;
+            });
+        });
+    </script>
+}
