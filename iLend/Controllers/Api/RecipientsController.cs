@@ -20,11 +20,15 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/recipients
-        public IHttpActionResult GetRecipients()
+        public IHttpActionResult GetRecipients(string query)
         {
-            return Ok(Mapper.Map<IEnumerable<RecipientDto>>(_context
-                .Recipients
-                .Include(r => r.UserGroup)
+            var recipientsQuery = _context.Recipients
+                .Include(r => r.UserGroup);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                recipientsQuery = recipientsQuery.Where(r => r.Name.Contains(query));
+
+            return Ok(Mapper.Map<IEnumerable<RecipientDto>>(recipientsQuery
                 .ToList()));
         }
 

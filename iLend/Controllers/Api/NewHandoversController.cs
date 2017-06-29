@@ -15,10 +15,11 @@ namespace iLend.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
+        [HttpPost]
         public IHttpActionResult CreateNewHandOver(NewHandOverDto newHandOver)
         {
             var recipient = _context.Recipients.Single(
-                r => r.Id == newHandOver.RecipentId);
+                r => r.Id == newHandOver.RecipientId);
 
             var products = _context.Products.Where(
                 p => newHandOver.ProductIds.Contains(p.Id)).ToList();
@@ -26,7 +27,7 @@ namespace iLend.Controllers.Api
             foreach (var product in products)
             {
                 if (product.NumberAvailable == 0)
-                    return BadRequest("Product is nor available.");
+                    return BadRequest("Product is not available.");
 
                 product.NumberAvailable--;
 

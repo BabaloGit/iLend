@@ -19,11 +19,16 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/products
-        public IHttpActionResult GetProducts()
+        public IHttpActionResult GetProducts(string query)
         {
-            return Ok(Mapper.Map<IEnumerable<ProductDto>>(_context
-                .Products
+            var productsQuery = _context.Products
                 .Include(p => p.Category)
+                .Where(p => p.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                productsQuery = productsQuery.Where(p => p.Name.Contains(query));
+
+            return Ok(Mapper.Map<IEnumerable<ProductDto>>(productsQuery
                 .ToList()));
         }
 
