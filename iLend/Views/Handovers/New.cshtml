@@ -96,10 +96,10 @@
                     data: vm
                 })
                 .done(function() {
-                    console.log("Done.");
+                    toastr.success("Handover(s) successfully recorded.");
                 })
                 .fail(function() {
-
+                        toastr.error("An unexpected error occured.");
                 });
             });
         });
