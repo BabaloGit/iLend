@@ -10,14 +10,14 @@
     <div class="form-group">
         <label>Recipient</label>
         <div class="tt-container">
-            <input id="recipient" type="text" value="" class="form-control" />
+            <input id="recipient" name="recipient" data-rule-validRecipient="true" required type="text" value="" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label>Product</label>
         <div class="tt-container">
-            <input id="product" type="text" value="" class="form-control" />
+            <input id="product" name="product" data-rule-atLeastOneProduct="true" type="text" value="" class="form-control" />
         </div>
     </div>
     
@@ -32,6 +32,7 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
 
@@ -87,20 +88,40 @@
                 vm.productIds.push(product.id);
             });
 
-            $("#newHandover").submit(function(e) {
-                e.preventDefault();
+            $.validator.addMethod("validRecipient",
+                function() {
+                    return vm.recipientId && vm.recipientId !== 0;
+                }, "Please select avalid recipient");
 
-                $.ajax({
-                    url: "/api/newhandovers",
-                    method: "post",
-                    data: vm
-                })
-                .done(function() {
-                    toastr.success("Handover(s) successfully recorded.");
-                })
-                .fail(function() {
+            $.validator.addMethod("atLeastOneProduct",
+                function() {
+                    return vm.productIds.length > 0;
+                }, "Please select at least one product.");
+
+            var validator = $("#newHandover").validate({
+                submitHandler: function() {
+                    $.ajax({
+                        url: "/api/newhandovers",
+                        method: "post",
+                        data: vm
+                    })
+                    .done(function() {
+                        toastr.success("Handover(s) successfully recorded.");
+
+                        $("#recipient").typeahead("val", "");
+                        $("#product").typeahead("val", "");
+                        $("#products").empty();
+
+                        vm = { productIds: [] };
+
+                        validator.resetForm();
+                    })
+                    .fail(function() {
                         toastr.error("An unexpected error occured.");
-                });
+                    });
+
+                    return false;
+                }
             });
         });
     </script>
