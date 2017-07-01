@@ -20,7 +20,7 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/recipients
-        public IHttpActionResult GetRecipients(string query)
+        public IHttpActionResult GetRecipients(string query = null)
         {
             var recipientsQuery = _context.Recipients
                 .Include(r => r.UserGroup);

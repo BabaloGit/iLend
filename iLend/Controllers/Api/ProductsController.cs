@@ -19,7 +19,7 @@ namespace iLend.Controllers.Api
         }
 
         // GET /api/products
-        public IHttpActionResult GetProducts(string query)
+        public IHttpActionResult GetProducts(string query = null)
         {
             var productsQuery = _context.Products
                 .Include(p => p.Category)
