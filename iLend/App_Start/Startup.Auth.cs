@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
+using System.Configuration;
 
 namespace iLend
 {
@@ -54,8 +55,8 @@ namespace iLend
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "259880831156362",
-               appSecret: "a425451adbbf5c10d063c7ca1c2a89bf");
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
