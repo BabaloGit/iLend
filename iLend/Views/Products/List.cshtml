@@ -15,6 +15,8 @@
     <tr>
         <th>Product</th>
         <th>Category</th>
+        <th>In Stock</th>
+        <th>Available</th>
         <th>Delete</th>
     </tr>
     </thead>
@@ -42,6 +44,12 @@
                         data: "category.name"
                     },
                     {
+                        data: "numberInStock"
+                    },
+                    {
+                        data: "numberAvailable"
+                    },
+                    {
                         data: "id",
                         render: function(data) {
                             return "<button class='btn-link js-delete' data-product-id=" + data + ">Delete</button>";
@@ -67,7 +75,7 @@
                             },
                             yes: {
                                 label: "Yes",
-                                className: "btn-danger",
+                                className: "btn-info",
                                 callback: function () {
                                     $.ajax({
                                         url: "/api/products/" + button.attr("data-product-id"),

@@ -61,6 +61,7 @@ namespace iLend.Controllers
             if (product.Id == 0)
             {
                 product.DateAdded = DateTime.Now;
+                product.NumberAvailable = product.NumberInStock;
                 _context.Products.Add(product);
             }
             else
@@ -68,6 +69,8 @@ namespace iLend.Controllers
                 var productInDb = _context.Products.Single(p => p.Id == product.Id);
                 productInDb.Name = product.Name;
                 productInDb.CategoryId = product.CategoryId;
+                productInDb.NumberAvailable = (byte) (productInDb.NumberAvailable 
+                    + (product.NumberInStock - productInDb.NumberInStock));
                 productInDb.NumberInStock = product.NumberInStock;
             }
 

@@ -53,6 +53,7 @@ namespace iLend.Controllers.Api
                 return BadRequest();
 
             var product = Mapper.Map<Product>(productDto);
+            product.NumberAvailable = product.NumberInStock;
 
             _context.Products.Add(product);
             _context.SaveChanges();
