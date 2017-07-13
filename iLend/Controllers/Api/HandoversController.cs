@@ -1,6 +1,9 @@
-﻿using iLend.Models;
+﻿using AutoMapper;
+using iLend.Models;
 using iLend.Models.Dtos;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 
@@ -13,6 +16,14 @@ namespace iLend.Controllers.Api
         public HandoversController()
         {
             _context = new ApplicationDbContext();
+        }
+
+        public IHttpActionResult GetHandovers()
+        {
+            return Ok(Mapper.Map<IEnumerable<HandoverDto>>(_context.HandOvers
+                .Include(h => h.Recipient)
+                .Include(h => h.Product)
+                .ToList()));
         }
 
         [HttpPost]

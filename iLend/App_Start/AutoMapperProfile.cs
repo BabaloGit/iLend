@@ -13,6 +13,7 @@ namespace iLend.App_Start
             CreateMap<Product, ProductDto>();
             CreateMap<UserGroup, UserGroupDto>();
             CreateMap<Category, CategoryDto>();
+            CreateMap<HandOver, HandoverDto>();
 
             // Dto to Domain
             CreateMap<RecipientDto, Recipient>()

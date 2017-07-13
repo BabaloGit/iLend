@@ -306,6 +306,7 @@
       <DependentUpon>201706231325107_AddNumberAvailableToProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Dtos\HandoverDto.cs" />
     <Compile Include="Models\Dtos\NewHandOverDto.cs" />
     <Compile Include="Models\HandOver.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -653,6 +654,7 @@
     <Content Include="Views\Products\ProductForm.cshtml" />
     <Content Include="Views\Products\List.cshtml" />
     <Content Include="Views\Handovers\New.cshtml" />
+    <Content Include="Views\Handovers\Index.cshtml" />
     <None Include="Web.Testing.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
