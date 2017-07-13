@@ -221,7 +221,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Api\NewHandoversController.cs" />
+    <Compile Include="Controllers\Api\HandoversController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\RecipientsController.cs" />
     <Compile Include="Controllers\HandoversController.cs" />

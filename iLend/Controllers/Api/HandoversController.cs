@@ -6,11 +6,11 @@ using System.Web.Http;
 
 namespace iLend.Controllers.Api
 {
-    public class NewHandoversController : ApiController
+    public class HandoversController : ApiController
     {
         private readonly ApplicationDbContext _context;
 
-        public NewHandoversController()
+        public HandoversController()
         {
             _context = new ApplicationDbContext();
         }
