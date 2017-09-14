@@ -102,7 +102,7 @@
             var validator = $("#newHandover").validate({
                 submitHandler: function() {
                     $.ajax({
-                        url: "/api/newhandovers",
+                        url: "/api/handovers",
                         method: "post",
                         data: vm
                     })
